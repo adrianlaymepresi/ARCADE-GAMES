@@ -147,15 +147,32 @@ export const snakeGame = {
       context.arc((food.x + .5) * cellSize, (food.y + .5) * cellSize, cellSize * .21, 0, Math.PI * 2);
       context.fill();
       context.shadowBlur = 0;
-      snake.forEach((part, index) => {
-        const inset = index === 0 ? 2.2 : 3.5;
-        context.fillStyle = index === 0 ? "#91e5f6" : "#4361ee";
+      snake.slice(1).forEach((part, index) => {
+        const inset = 3.2;
+        context.fillStyle = index % 2 ? "#294fa8" : "#4361ee";
         context.fillRect(part.x * cellSize + inset, part.y * cellSize + inset, cellSize - inset * 2, cellSize - inset * 2);
-        if (index === 0) {
-          context.fillStyle = "#071126";
-          context.fillRect(part.x * cellSize + cellSize * .63, part.y * cellSize + cellSize * .28, 3, 3);
-        }
+        context.fillStyle = "#91e5f6";
+        context.fillRect(part.x * cellSize + cellSize * .28, part.y * cellSize + cellSize * .42, cellSize * .44, 2);
       });
+      const head = snake[0];
+      const angle = Math.atan2(direction.y, direction.x) + Math.PI / 2;
+      context.save();
+      context.translate((head.x + .5) * cellSize, (head.y + .5) * cellSize);
+      context.rotate(angle);
+      context.scale(cellSize / 30, cellSize / 30);
+      context.shadowColor = "#4cc9f0";
+      context.shadowBlur = 10;
+      context.fillStyle = "#4361ee";
+      context.beginPath(); context.moveTo(-13, 10); context.lineTo(-15, 2); context.lineTo(-8, -4); context.lineTo(-3, 5); context.lineTo(0, -14); context.lineTo(3, 5); context.lineTo(8, -4); context.lineTo(15, 2); context.lineTo(13, 10); context.lineTo(5, 14); context.lineTo(-5, 14); context.closePath(); context.fill();
+      context.fillStyle = "#c4dafa";
+      context.beginPath(); context.moveTo(-8, 1); context.lineTo(0, -10); context.lineTo(8, 1); context.lineTo(5, 10); context.lineTo(-5, 10); context.closePath(); context.fill();
+      context.fillStyle = "#4cc9f0";
+      context.beginPath(); context.moveTo(0, -10); context.lineTo(4, -2); context.lineTo(0, 2); context.lineTo(-4, -2); context.closePath(); context.fill();
+      context.fillStyle = "#071126";
+      context.fillRect(-5, -1, 3, 3); context.fillRect(2, -1, 3, 3);
+      context.fillStyle = "#ffca6b";
+      context.beginPath(); context.moveTo(-3, 10); context.lineTo(3, 10); context.lineTo(0, 16); context.closePath(); context.fill();
+      context.restore();
     }
 
     document.addEventListener("keydown", (event) => {

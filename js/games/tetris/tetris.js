@@ -2,6 +2,7 @@ import { audio } from "../../core/audio.js";
 import { createCanvasContext, randomItem } from "../../core/canvas.js";
 import { storage } from "../../core/storage.js";
 import { showToast } from "../../components/toast.js";
+import { t } from "../../core/i18n.js";
 
 const columns = 10;
 const rows = 20;
@@ -23,7 +24,7 @@ export const tetrisGame = {
   id: "tetris",
   title: "Tetris Matrix",
   mount(container) {
-    container.innerHTML = `<div class="game-shell"><div class="game-toolbar"><div class="game-stats"><span class="stat-chip">Score <b data-score>0</b></span><span class="stat-chip">Best <b data-best>${storage.getBestScore("tetris")}</b></span><span class="stat-chip">Lines <b data-lines>0</b></span><span class="stat-chip">Level <b data-level>1</b></span></div><div class="game-toolbar-actions"><button type="button" data-pause>Pause</button><button type="button" data-restart>Restart</button></div></div><div class="tetris-layout"><div class="canvas-frame"><canvas class="game-canvas tetris-canvas" width="300" height="600" aria-label="Tetris Matrix game area"></canvas><div class="canvas-overlay" data-overlay><strong>Tetris Matrix</strong><span>Organize the incoming modules into clean lines.</span><button type="button" data-start>Start stack</button></div></div><aside class="tetris-side"><div class="game-panel"><p>NEXT MODULE</p><canvas class="next-preview" width="160" height="138" aria-label="Next Tetris piece"></canvas></div><div class="game-panel"><p>CONTROLS</p><strong>← → ↑ ↓</strong><p>Space drops · P pauses</p></div></aside></div><div class="mobile-controls" aria-label="Tetris touch controls"><div class="move-controls"><button data-action="left" aria-label="Move left">←</button><button data-action="right" aria-label="Move right">→</button></div><div class="move-controls"><button data-action="rotate" aria-label="Rotate">↻</button><button data-action="drop" aria-label="Hard drop">⇩</button></div></div></div>`;
+    container.innerHTML = `<div class="game-shell" data-game="tetris"><div class="game-toolbar"><div class="game-stats"><span class="stat-chip">${t("game.score")} <b data-score>0</b></span><span class="stat-chip">${t("game.best")} <b data-best>${storage.getBestScore("tetris")}</b></span><span class="stat-chip">${t("game.lines")} <b data-lines>0</b></span><span class="stat-chip">${t("game.level")} <b data-level>1</b></span></div><div class="game-toolbar-actions"><button type="button" data-pause>${t("game.pause")}</button><button type="button" data-restart>${t("game.restart")}</button></div></div><div class="tetris-layout"><div class="canvas-frame"><canvas class="game-canvas tetris-canvas" width="300" height="600" aria-label="Tetris Matrix game area"></canvas><div class="canvas-overlay" data-overlay><strong>Tetris Matrix</strong><span>Organize the incoming modules into clean lines.</span><button type="button" data-start>${t("game.start")}</button></div></div><aside class="tetris-side"><div class="game-panel"><p>NEXT MODULE</p><canvas class="next-preview" width="160" height="138" aria-label="Next Tetris piece"></canvas></div><div class="game-panel"><p>CONTROLS</p><strong>← → ↑ ↓</strong><p>Space drops · P pauses</p></div></aside></div><div class="mobile-controls" aria-label="Tetris touch controls"><div class="move-controls"><button data-action="left" aria-label="Move left">←</button><button data-action="right" aria-label="Move right">→</button></div><div class="move-controls"><button data-action="rotate" aria-label="Rotate">↻</button><button data-action="drop" aria-label="Hard drop">⇩</button></div></div></div>`;
     const canvas = container.querySelector(".tetris-canvas");
     const preview = container.querySelector(".next-preview");
     const context = createCanvasContext(canvas, columns * block, rows * block);
@@ -51,9 +52,9 @@ export const tetrisGame = {
       bag = [];
       game = { board: createBoard(), score: 0, lines: 0, level: 1, status: "ready", next: takePiece(), active: null, dropClock: 0 };
       spawn();
-      scoreElement.textContent = "0"; linesElement.textContent = "0"; levelElement.textContent = "1"; pauseButton.textContent = "Pause";
+      scoreElement.textContent = "0"; linesElement.textContent = "0"; levelElement.textContent = "1"; pauseButton.textContent = t("game.pause");
       overlay.hidden = false;
-      overlay.innerHTML = `<strong>Tetris Matrix</strong><span>Organize the incoming modules into clean lines.</span><button type="button" data-start>Start stack</button>`;
+      overlay.innerHTML = `<strong>Tetris Matrix</strong><span>Organize the incoming modules into clean lines.</span><button type="button" data-start>${t("game.start")}</button>`;
       overlay.querySelector("[data-start]").addEventListener("click", start, { signal: controller.signal });
       draw();
     }
@@ -183,8 +184,8 @@ export const tetrisGame = {
     }
 
     function togglePause() {
-      if (game.status === "playing") { game.status = "paused"; cancelAnimationFrame(frame); pauseButton.textContent = "Resume"; overlay.hidden = false; overlay.innerHTML = "<strong>Paused</strong><span>The matrix is waiting.</span>"; }
-      else if (game.status === "paused") { pauseButton.textContent = "Pause"; overlay.hidden = true; start(); }
+      if (game.status === "playing") { game.status = "paused"; cancelAnimationFrame(frame); pauseButton.textContent = t("game.resume"); overlay.hidden = false; overlay.innerHTML = "<strong>Paused</strong><span>The matrix is waiting.</span>"; }
+      else if (game.status === "paused") { pauseButton.textContent = t("game.pause"); overlay.hidden = true; start(); }
     }
 
     document.addEventListener("keydown", (event) => {

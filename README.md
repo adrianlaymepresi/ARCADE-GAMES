@@ -1,4 +1,4 @@
-# IGNACIO ARCADE
+# PRESI-GAMES
 
 A responsive browser-native arcade portfolio by **IGNACIO ADRIAN LAYME DELGADO**. It uses HTML, CSS and modern vanilla JavaScript only: no framework, build step, backend or dependency is required.
 
@@ -13,6 +13,10 @@ This project demonstrates frontend engineering through interactive software: Can
 - **Local Chess** — two-player chess with legal moves, check, checkmate, stalemate, castling, en passant, promotion, captures and history.
 - **Tic-Tac-Toe** — local play plus Easy, Medium and unbeatable Hard computer modes.
 - **Tetris Matrix** — seven tetrominoes, line clears, levels, wall kicks, next-piece preview, mobile buttons and persistent record.
+- **Minesweeper** — three scalable minefield sizes with safe opening cells, reveal flood-fill and touch-friendly flag mode.
+- **Circuit Rush** — a 2D Canvas endurance racer with selectable laps, escalating speed, rival cars and touch steering.
+- **Memory Stack** — configurable technology-pair memory game with 4–16 pairs, lives and optional preview mode.
+- **Word Signal** — Spanish/English word discovery game with custom word length, attempts and positional color feedback.
 
 ## Features
 

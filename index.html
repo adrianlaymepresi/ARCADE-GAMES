@@ -1,17 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ignacio Arcade, five browser games built with HTML, CSS and vanilla JavaScript.">
+  <meta name="description" content="PRESI-GAMES, seven browser games built with HTML, CSS and vanilla JavaScript.">
   <meta name="theme-color" content="#071126">
-  <title>Ignacio Arcade | Vanilla JavaScript Games</title>
+  <title>PRESI-GAMES | Vanilla JavaScript Games</title>
   <link rel="icon" href="./assets/brand/eagle-code-vectorial.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./css/variables.css">
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/layout.css">
   <link rel="stylesheet" href="./css/games.css">
   <link rel="stylesheet" href="./css/responsive.css">
+  <link rel="stylesheet" href="./css/enhancements.css">
 </head>
 <body>
   <a class="skip-link" href="#games">Skip to games</a>
@@ -19,68 +20,42 @@
   <div class="page-glow glow-two"></div>
   <header class="site-header" id="home">
     <nav class="navigation container" aria-label="Primary navigation">
-      <a class="brand" href="#home" aria-label="Ignacio Arcade home">
+      <a class="brand" href="#home" aria-label="PRESI-GAMES home">
         <img src="./assets/brand/eagle-code-vectorial.svg" alt="Eagle code emblem">
-        <span><strong>IGNACIO</strong><em>ARCADE</em></span>
+        <span><strong>PRESI-</strong><em>GAMES</em></span>
       </a>
-      <button class="nav-toggle icon-button" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu"><span></span><span></span></button>
+      <button class="nav-toggle icon-button" type="button" aria-expanded="false" aria-controls="nav-links" data-i18n-aria="nav.menu" aria-label="Open navigation menu"><span></span><span></span></button>
       <div class="nav-links" id="nav-links">
-        <a href="#games">Games</a>
-        <a href="#developer">Developer</a>
-        <a href="https://github.com/adrianlaymepresi" target="_blank" rel="noreferrer">GitHub</a>
-        <button class="sound-toggle" type="button" aria-pressed="true" aria-label="Toggle interface sound"><span aria-hidden="true">◖</span> Sound</button>
+        <a href="#games" data-i18n="nav.games">Games</a>
+        <a href="https://github.com/adrianlaymepresi" target="_blank" rel="noreferrer" data-i18n="nav.github">GitHub</a>
+        <div class="language-switch" role="group" data-i18n-aria="nav.language" aria-label="Choose language"><button type="button" data-language="es" aria-pressed="false">ES</button><button type="button" data-language="en" aria-pressed="false">EN</button></div>
+        <button class="sound-toggle" type="button" aria-pressed="true" aria-label="Toggle interface sound"><span aria-hidden="true">&#9686;</span> Sound</button>
       </div>
     </nav>
   </header>
   <main>
-    <section class="hero container" aria-labelledby="hero-title">
+    <section class="hero hero-profile container" aria-labelledby="hero-title">
+      <div class="hero-photo-wrap"><div class="hero-photo-frame"><img src="./assets/images/adrian.jpg" alt="Ignacio Adrian Layme Delgado"></div><span class="profile-signal" data-i18n="developer.available">AVAILABLE FOR WORK</span></div>
       <div class="hero-copy">
-        <p class="eyebrow"><span></span> Independent browser arcade</p>
-        <h1 id="hero-title">Playful systems.<br><i>Clean code.</i></h1>
-        <p class="hero-description">Five handcrafted games, engineered from scratch with Canvas, algorithms and vanilla JavaScript. No frameworks. No borrowed art.</p>
+        <h1 id="hero-title" data-i18n-html="hero.title">Ignacio Adrian<br><i>Layme Delgado.</i></h1>
+        <p class="hero-description" data-i18n="hero.description">Frontend developer building responsive interfaces and browser games with a focus on clear systems, strong interaction and thoughtful visual detail.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#games">Explore games <span>→</span></a>
-          <a class="button button-quiet" href="https://portafolio-web-adrian-layme-presi.vercel.app/" target="_blank" rel="noreferrer">View portfolio <span>↗</span></a>
+          <a class="button button-primary" href="#games"><span data-i18n="hero.explore">Explore games</span> <span>&rarr;</span></a>
+          <a class="button button-quiet" href="https://portafolio-web-adrian-layme-presi.vercel.app/" target="_blank" rel="noreferrer"><span data-i18n="hero.portfolio">View portfolio</span> <span>&nearr;</span></a>
         </div>
-        <ul class="tech-list" aria-label="Project technology">
-          <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Canvas API</li>
-        </ul>
-      </div>
-      <div class="hero-terminal" aria-label="Animated arcade system panel">
-        <div class="terminal-top"><span></span><span></span><span></span><b>arcade.core</b><small>ONLINE</small></div>
-        <div class="terminal-content">
-          <p><span class="terminal-dim">01</span> <i>const</i> arcade = <strong>new</strong> Arcade();</p>
-          <p><span class="terminal-dim">02</span> arcade.<b>boot</b>({ sound: <em>true</em> });</p>
-          <p><span class="terminal-dim">03</span> <i>await</i> arcade.<b>loadGames</b>();</p>
-          <p><span class="terminal-dim">04</span> <span class="terminal-comment">status: five worlds ready</span></p>
-          <div class="terminal-radar"><span class="radar-ring ring-a"></span><span class="radar-ring ring-b"></span><span class="radar-sweep"></span><span class="radar-core"></span><small>SYS_READY</small></div>
-          <div class="terminal-readout"><span>GAMES <b>05</b></span><span>FPS <b>60</b></span><span>STATUS <b>STABLE</b></span></div>
-        </div>
+        <div class="developer-links hero-links"><a class="text-link" href="https://github.com/adrianlaymepresi" target="_blank" rel="noreferrer"><span data-i18n="developer.github">GitHub profile</span> <span>&nearr;</span></a><a class="text-link" href="https://portafolio-web-adrian-layme-presi.vercel.app/" target="_blank" rel="noreferrer"><span data-i18n="developer.portfolio">Portfolio</span> <span>&nearr;</span></a></div>
+        <ul class="tech-list" aria-label="Project technology"><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Canvas API</li></ul>
       </div>
     </section>
-    <section class="arcade-section container" id="games" aria-labelledby="games-title">
-      <div class="section-heading">
-        <div><p class="eyebrow"><span></span> Game library</p><h2 id="games-title">Choose your <i>challenge.</i></h2></div>
-        <p>Each title runs locally in your browser and remembers your personal records.</p>
-      </div>
+    <section class="arcade-section container" id="games" aria-label="Game library">
       <div class="game-grid" id="game-grid"></div>
     </section>
-    <section class="developer-section container" id="developer" aria-labelledby="developer-title">
-      <div class="developer-photo-wrap"><div class="photo-frame"><img src="./assets/images/adrian.jpg" alt="Ignacio Adrian Layme Delgado"></div><span class="profile-signal">AVAILABLE FOR WORK</span></div>
-      <div class="developer-copy">
-        <p class="eyebrow"><span></span> The developer</p>
-        <h2 id="developer-title">Built with focus<br>and <i>curiosity.</i></h2>
-        <p>I'm <strong>Ignacio Adrian Layme Delgado</strong>, a frontend developer who turns ideas into thoughtful, responsive digital experiences. This arcade is a hands-on study in game loops, UI systems and browser-native engineering.</p>
-        <div class="stack-pills"><span>Vanilla JS</span><span>Canvas</span><span>Web Audio</span><span>Algorithms</span><span>Responsive UI</span></div>
-        <div class="developer-links"><a class="text-link" href="https://github.com/adrianlaymepresi" target="_blank" rel="noreferrer">GitHub profile <span>↗</span></a><a class="text-link" href="https://portafolio-web-adrian-layme-presi.vercel.app/" target="_blank" rel="noreferrer">Portfolio <span>↗</span></a></div>
-      </div>
-    </section>
   </main>
-  <footer class="site-footer"><div class="container"><a class="brand" href="#home"><img src="./assets/brand/eagle-code-vectorial.svg" alt=""><span><strong>IGNACIO</strong><em>ARCADE</em></span></a><p>Designed and built from scratch · 2026</p><a href="#home" aria-label="Back to top">Back to top ↑</a></div></footer>
+  <footer class="site-footer"><div class="container"><a class="brand" href="#home"><img src="./assets/brand/eagle-code-vectorial.svg" alt=""><span><strong>PRESI-</strong><em>GAMES</em></span></a><p data-i18n="footer.rights">All rights reserved &middot; Ignacio Adrian Layme Delgado</p><a href="#home" data-i18n="footer.top" aria-label="Back to top">Back to top</a></div></footer>
   <div class="modal" id="game-modal" hidden>
     <div class="modal-backdrop" data-close-modal></div>
     <section class="game-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <header class="game-modal-header"><div><p class="modal-kicker" id="modal-category">GAME SYSTEM</p><h2 id="modal-title">Game</h2></div><div class="modal-actions"><button class="icon-button modal-help" type="button" aria-label="Show controls">?</button><button class="icon-button" type="button" data-close-modal aria-label="Close game">×</button></div></header>
+      <header class="game-modal-header"><div><p class="modal-kicker" id="modal-category">GAME SYSTEM</p><h2 id="modal-title">Game</h2></div><div class="modal-actions"><button class="icon-button modal-help" type="button" aria-label="Show controls">?</button><button class="icon-button" type="button" data-close-modal aria-label="Close game">&times;</button></div></header>
       <div class="game-stage" id="game-stage"></div>
       <div class="game-help" id="game-help" hidden></div>
     </section>

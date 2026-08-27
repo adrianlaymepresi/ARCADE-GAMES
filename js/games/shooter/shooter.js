@@ -145,10 +145,11 @@ export const shooterGame = {
       if (state.invulnerable > 0 && Math.floor(state.invulnerable * 12) % 2 === 0) context.globalAlpha = .35;
       context.shadowColor = "#4cc9f0"; context.shadowBlur = 18;
       context.fillStyle = "#91e5f6";
-      context.beginPath(); context.moveTo(0, -28); context.lineTo(20, 23); context.lineTo(0, 15); context.lineTo(-20, 23); context.closePath(); context.fill();
+      context.beginPath(); context.moveTo(0, -30); context.lineTo(11, -7); context.lineTo(24, 21); context.lineTo(8, 16); context.lineTo(0, 27); context.lineTo(-8, 16); context.lineTo(-24, 21); context.lineTo(-11, -7); context.closePath(); context.fill();
       context.fillStyle = "#4361ee";
-      context.beginPath(); context.moveTo(0, -15); context.lineTo(8, 15); context.lineTo(-8, 15); context.closePath(); context.fill();
-      context.fillStyle = "#f5fbff"; context.fillRect(-3, -10, 6, 10);
+      context.beginPath(); context.moveTo(0, -23); context.lineTo(8, 8); context.lineTo(0, 20); context.lineTo(-8, 8); context.closePath(); context.fill();
+      context.fillStyle = "#071126"; context.beginPath(); context.ellipse(0, -5, 5, 10, 0, 0, Math.PI * 2); context.fill();
+      context.fillStyle = "#f5fbff"; context.fillRect(-3, 16, 2, 9); context.fillRect(1, 16, 2, 9);
       context.restore();
     }
 
@@ -157,11 +158,17 @@ export const shooterGame = {
       context.shadowColor = enemy.type === "tank" ? "#ffca6b" : "#ff6e88"; context.shadowBlur = 10;
       context.fillStyle = enemy.type === "tank" ? "#ffca6b" : enemy.type === "drifter" ? "#b394ff" : "#ff6e88";
       context.beginPath();
-      if (enemy.type === "scout") { context.moveTo(0, 20); context.lineTo(18, -16); context.lineTo(0, -8); context.lineTo(-18, -16); }
-      else if (enemy.type === "drifter") { context.moveTo(-20, -12); context.lineTo(0, -20); context.lineTo(20, -12); context.lineTo(14, 17); context.lineTo(-14, 17); }
-      else { context.roundRect(-28, -20, 56, 40, 8); }
+      if (enemy.type === "scout") {
+        context.moveTo(0, 22); context.lineTo(7, 4); context.lineTo(23, -16); context.lineTo(11, -12); context.lineTo(5, -23); context.lineTo(0, -11); context.lineTo(-5, -23); context.lineTo(-11, -12); context.lineTo(-23, -16); context.lineTo(-7, 4);
+      } else if (enemy.type === "drifter") {
+        context.moveTo(0, -23); context.lineTo(12, -13); context.lineTo(24, -3); context.lineTo(12, 5); context.lineTo(16, 21); context.lineTo(0, 14); context.lineTo(-16, 21); context.lineTo(-12, 5); context.lineTo(-24, -3); context.lineTo(-12, -13);
+      } else {
+        for (let point = 0; point < 9; point += 1) { const angle = point / 9 * Math.PI * 2; const radius = 19 + (point % 3) * 6; context.lineTo(Math.cos(angle) * radius, Math.sin(angle) * radius); }
+      }
       context.closePath(); context.fill();
-      context.fillStyle = "#071126"; context.fillRect(-5, -4, 10, 9); context.restore();
+      if (enemy.type === "tank") { context.fillStyle = "#75608a"; context.beginPath(); context.arc(-7, -4, 7, 0, Math.PI * 2); context.fill(); context.beginPath(); context.arc(10, 8, 4, 0, Math.PI * 2); context.fill(); }
+      else { context.fillStyle = "#071126"; context.beginPath(); context.ellipse(0, -2, 6, 8, 0, 0, Math.PI * 2); context.fill(); context.fillStyle = "#91e5f6"; context.fillRect(-2, -6, 4, 6); }
+      context.restore();
     }
 
     function draw() {
