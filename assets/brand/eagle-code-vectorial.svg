@@ -1,0 +1,411 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1024 1024"
+     role="img"
+     aria-labelledby="titulo descripcion">
+
+  <title id="titulo">Aguila de codigo</title>
+  <desc id="descripcion">
+    Emblema vectorial de un aguila tecnologica con alas de circuitos y simbolo de codigo.
+  </desc>
+
+  <defs>
+    <!-- =====================================================
+         COLOR TOKENS
+         Claude puede reemplazar estos valores por los tokens
+         oficiales de la paleta del proyecto.
+         ===================================================== -->
+    <style>
+      :root {
+        --aguila-fondo: #071126;
+        --aguila-oscuro: #0b1638;
+        --aguila-azul-profundo: #3A0CA3;
+        --aguila-violeta: #7209B7;
+        --aguila-azul: #4361EE;
+        --aguila-cian: #4CC9F0;
+        --aguila-magenta: #F72585;
+        --aguila-blanco: #F5FBFF;
+        --aguila-hielo: #C4DAFA;
+      }
+
+      .trazo-circuito {
+        fill: none;
+        stroke: url(#gradienteCircuito);
+        stroke-width: 11;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .trazo-circuito-fino {
+        fill: none;
+        stroke: var(--aguila-cian);
+        stroke-width: 6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: .9;
+      }
+
+      .nodo {
+        fill: var(--aguila-fondo);
+        stroke: var(--aguila-cian);
+        stroke-width: 7;
+      }
+
+      .borde-neon {
+        stroke: var(--aguila-cian);
+        stroke-width: 8;
+        stroke-linejoin: round;
+      }
+    </style>
+
+    <linearGradient id="gradienteAla"
+                    x1="120" y1="140"
+                    x2="445" y2="835"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="var(--aguila-cian)"/>
+      <stop offset=".38" stop-color="var(--aguila-azul)"/>
+      <stop offset=".72" stop-color="var(--aguila-violeta)"/>
+      <stop offset="1" stop-color="var(--aguila-magenta)"/>
+    </linearGradient>
+
+    <linearGradient id="gradienteCircuito"
+                    x1="150" y1="200"
+                    x2="470" y2="770"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="var(--aguila-cian)"/>
+      <stop offset=".5" stop-color="var(--aguila-azul)"/>
+      <stop offset="1" stop-color="var(--aguila-magenta)"/>
+    </linearGradient>
+
+    <linearGradient id="gradienteCabeza"
+                    x1="420" y1="270"
+                    x2="640" y2="470"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="var(--aguila-blanco)"/>
+      <stop offset=".42" stop-color="var(--aguila-hielo)"/>
+      <stop offset=".78" stop-color="var(--aguila-azul)"/>
+      <stop offset="1" stop-color="var(--aguila-azul-profundo)"/>
+    </linearGradient>
+
+    <linearGradient id="gradientePecho"
+                    x1="512" y1="470"
+                    x2="512" y2="865"
+                    gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#10265A"/>
+      <stop offset=".58" stop-color="var(--aguila-oscuro)"/>
+      <stop offset="1" stop-color="var(--aguila-azul-profundo)"/>
+    </linearGradient>
+
+    <radialGradient id="brilloPecho"
+                    cx="50%" cy="40%" r="70%">
+      <stop offset="0" stop-color="var(--aguila-azul)" stop-opacity=".36"/>
+      <stop offset="1" stop-color="var(--aguila-fondo)" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="resplandor"
+            x="-40%" y="-40%"
+            width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="desenfoque"/>
+      <feMerge>
+        <feMergeNode in="desenfoque"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- =====================================================
+         ALA IZQUIERDA BASE
+         Se reutiliza espejada para construir el ala derecha.
+         ===================================================== -->
+    <g id="ala">
+      <!-- Silueta principal -->
+      <path d="
+        M 472 430
+        L 388 380
+        L 130 145
+        L 160 235
+        L 330 408
+        L 178 278
+        L 208 377
+        L 352 490
+        L 214 392
+        L 250 500
+        L 374 577
+        L 275 532
+        L 323 630
+        L 402 670
+        L 341 660
+        L 394 747
+        L 455 777
+        Z"
+        fill="url(#gradienteAla)"
+        class="borde-neon"/>
+
+      <!-- Panel interior oscuro -->
+      <path d="
+        M 452 451
+        L 377 409
+        L 174 222
+        L 209 310
+        L 350 441
+        L 226 345
+        L 260 430
+        L 375 516
+        L 276 453
+        L 308 538
+        L 397 598
+        L 329 569
+        L 366 641
+        L 427 682
+        Z"
+        fill="var(--aguila-fondo)"
+        opacity=".96"/>
+
+      <!-- Plumas geometricas -->
+      <path d="M142 159 L311 314 L271 290 L173 229 Z"
+            fill="var(--aguila-cian)" opacity=".88"/>
+      <path d="M183 282 L331 414 L285 384 L213 337 Z"
+            fill="var(--aguila-azul)" opacity=".9"/>
+      <path d="M219 397 L357 493 L307 465 L251 447 Z"
+            fill="var(--aguila-violeta)" opacity=".92"/>
+      <path d="M267 520 L386 584 L338 567 L298 559 Z"
+            fill="var(--aguila-magenta)" opacity=".82"/>
+
+      <!-- Circuitos -->
+      <path class="trazo-circuito"
+            d="M185 245 L250 303 L250 352 L314 408 L314 451 L377 493"/>
+      <path class="trazo-circuito-fino"
+            d="M204 331 L256 376 L256 414 L314 463"/>
+      <path class="trazo-circuito-fino"
+            d="M255 455 L304 488 L304 531 L365 570"/>
+      <path class="trazo-circuito"
+            d="M286 559 L329 579 L329 624 L399 666"/>
+      <path class="trazo-circuito-fino"
+            d="M307 293 L342 324 L342 370 L402 420"/>
+
+      <!-- Nodos -->
+      <circle class="nodo" cx="250" cy="303" r="14"/>
+      <circle class="nodo" cx="314" cy="451" r="14"/>
+      <circle class="nodo" cx="304" cy="531" r="12"/>
+      <circle class="nodo" cx="329" cy="624" r="14"/>
+      <circle class="nodo" cx="342" cy="324" r="12"/>
+
+      <!-- Detalles secundarios -->
+      <circle cx="221" cy="365" r="7" fill="var(--aguila-cian)"/>
+      <circle cx="292" cy="510" r="7" fill="var(--aguila-azul)"/>
+      <circle cx="350" cy="612" r="7" fill="var(--aguila-magenta)"/>
+    </g>
+  </defs>
+
+  <!-- =======================================================
+       RESPLANDOR EXTERNO MUY SUAVE
+       ======================================================= -->
+  <g opacity=".22" filter="url(#resplandor)">
+    <path d="M512 244 L455 366 L370 413 L430 780 L512 886 L594 780 L654 413 L569 366 Z"
+          fill="var(--aguila-cian)"/>
+  </g>
+
+  <!-- =======================================================
+       ALAS
+       ======================================================= -->
+  <use href="#ala"/>
+  <use href="#ala" transform="translate(1024 0) scale(-1 1)"/>
+
+  <!-- =======================================================
+       CUELLO Y CABEZA DEL AGUILA
+       ======================================================= -->
+
+  <!-- Cuello posterior -->
+  <path d="
+    M 448 474
+    L 422 424
+    L 449 356
+    L 493 326
+    L 548 347
+    L 574 401
+    L 554 488
+    L 512 530
+    Z"
+    fill="var(--aguila-azul-profundo)"/>
+
+  <!-- Plumas del cuello -->
+  <path d="M455 402 L408 472 L460 451 L431 517 L493 473 Z"
+        fill="var(--aguila-azul)"/>
+  <path d="M488 418 L454 526 L511 482 L520 551 L550 466 Z"
+        fill="var(--aguila-violeta)"/>
+  <path d="M528 411 L544 523 L574 468 L596 516 L585 404 Z"
+        fill="#10265A"/>
+
+  <!-- Cabeza principal -->
+  <path d="
+    M 421 352
+    L 456 296
+    L 522 266
+    L 607 270
+    L 664 300
+    L 719 313
+    L 750 341
+    L 748 379
+    L 721 407
+    L 715 375
+    L 667 362
+    L 617 378
+    L 555 388
+    L 511 418
+    L 463 449
+    L 479 388
+    Z"
+    fill="url(#gradienteCabeza)"
+    stroke="var(--aguila-cian)"
+    stroke-width="7"
+    stroke-linejoin="round"/>
+
+  <!-- Frente / ceja -->
+  <path d="
+    M 439 336
+    L 493 291
+    L 590 291
+    L 643 319
+    L 592 331
+    L 532 321
+    L 484 350
+    Z"
+    fill="var(--aguila-blanco)"
+    opacity=".94"/>
+
+  <!-- Mascara oscura -->
+  <path d="
+    M 487 351
+    L 541 318
+    L 620 323
+    L 665 345
+    L 616 356
+    L 566 350
+    L 525 381
+    L 482 412
+    Z"
+    fill="var(--aguila-fondo)"/>
+
+  <!-- Mejilla azul -->
+  <path d="M503 395 L555 360 L621 361 L570 386 L521 429 Z"
+        fill="var(--aguila-azul)"/>
+
+  <!-- Pico -->
+  <path d="
+    M 621 323
+    L 688 331
+    L 734 351
+    L 751 369
+    L 742 402
+    L 719 422
+    L 721 386
+    L 696 369
+    L 644 362
+    Z"
+    fill="var(--aguila-hielo)"
+    stroke="var(--aguila-cian)"
+    stroke-width="5"
+    stroke-linejoin="round"/>
+
+  <!-- Punta del pico -->
+  <path d="M721 386 L748 378 L742 402 L719 422 Z"
+        fill="var(--aguila-cian)"/>
+
+  <!-- Ojo -->
+  <path d="M570 326 L603 330 L586 349 L566 343 Z"
+        fill="var(--aguila-cian)"
+        filter="url(#resplandor)"/>
+
+  <!-- =======================================================
+       PECHO / ESCUDO CENTRAL
+       ======================================================= -->
+  <path d="
+    M 432 454
+    L 512 410
+    L 592 454
+    L 624 555
+    L 610 704
+    L 560 800
+    L 512 864
+    L 464 800
+    L 414 704
+    L 400 555
+    Z"
+    fill="url(#gradientePecho)"
+    stroke="var(--aguila-cian)"
+    stroke-width="9"
+    stroke-linejoin="round"/>
+
+  <path d="
+    M 446 477
+    L 512 442
+    L 578 477
+    L 599 560
+    L 587 686
+    L 544 772
+    L 512 819
+    L 480 772
+    L 437 686
+    L 425 560
+    Z"
+    fill="url(#brilloPecho)"/>
+
+  <!-- Linea central -->
+  <path d="M512 682 L512 820"
+        stroke="var(--aguila-cian)"
+        stroke-width="8"
+        stroke-linecap="round"/>
+  <circle cx="512" cy="820" r="11"
+          fill="var(--aguila-fondo)"
+          stroke="var(--aguila-cian)"
+          stroke-width="7"/>
+
+  <!-- Circuitos laterales del pecho -->
+  <path class="trazo-circuito-fino"
+        d="M449 592 L479 622 L479 681 L512 707"/>
+  <path class="trazo-circuito-fino"
+        d="M575 592 L545 622 L545 681 L512 707"/>
+
+  <!-- =======================================================
+       SIMBOLO DE CODIGO </> TOTALMENTE VECTORIAL
+       ======================================================= -->
+  <g filter="url(#resplandor)"
+     fill="none"
+     stroke="var(--aguila-cian)"
+     stroke-width="16"
+     stroke-linecap="square"
+     stroke-linejoin="miter">
+
+    <!-- < -->
+    <path d="M480 546 L442 580 L480 614"/>
+
+    <!-- / -->
+    <path d="M527 532 L500 628"/>
+
+    <!-- > -->
+    <path d="M544 546 L582 580 L544 614"/>
+  </g>
+
+  <!-- =======================================================
+       DETALLES DE UNION DE LAS ALAS
+       ======================================================= -->
+  <path d="M398 493 L432 454 L445 535 L415 568 Z"
+        fill="var(--aguila-azul)"
+        stroke="var(--aguila-cian)"
+        stroke-width="5"/>
+
+  <path d="M626 493 L592 454 L579 535 L609 568 Z"
+        fill="var(--aguila-azul)"
+        stroke="var(--aguila-cian)"
+        stroke-width="5"/>
+
+  <!-- Cola geometrica -->
+  <path d="M464 800 L512 864 L487 897 L446 839 Z"
+        fill="var(--aguila-violeta)"
+        stroke="var(--aguila-cian)"
+        stroke-width="5"/>
+
+  <path d="M560 800 L512 864 L537 897 L578 839 Z"
+        fill="var(--aguila-magenta)"
+        stroke="var(--aguila-cian)"
+        stroke-width="5"/>
+
+</svg>
